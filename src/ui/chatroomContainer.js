@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 
 var socket = io();
 
+require('assets/styles/chatroomContainer.scss');
 
 export default React.createClass({
 	getInitialState:function(){
@@ -46,15 +47,17 @@ export default React.createClass({
 	render: function () {
 	    return (
 	    	<div>
-	    		<form id="chatform" onSubmit={this.onSubmit}>
-    				<input type="text" id="chatfield" />
-    				<button type="submit">Submit</button>
-  				</form>
-  				<div id="chatarea">
+	    		<h1 className="title">The Chat Room</h1>
+	    		<div id="chatarea">
   					{this.state.messages.map(function(message, index){
-  						return (<p key={index}>{message}</p>)
+  						return (<div key={index}>{message}</div>)
   					})}
   				</div>
+	    		<form id="chatform" onSubmit={this.onSubmit}>
+    				<input className="text" type="text" id="chatfield" />
+    				<button className="button" type="submit">Submit</button>
+  				</form>
+  				
 	    	</div>
 	    )
 	}
